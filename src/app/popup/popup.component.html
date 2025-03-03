@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Result</h2>
+<mat-dialog-content>
+  <h3>{{data.value}}</h3>
+  <p>
+    @for (item of data.all; track item) {
+      @if (item == 1) {
+        <span class="fail">{{item}}</span>,
+      } @else if (item == data.faces) {
+        <span class="sucess">{{item}}</span>,
+      } @else {
+        <span>{{item}}</span>,
+      }
+    }
+  </p>
+</mat-dialog-content>

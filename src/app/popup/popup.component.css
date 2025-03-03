@@ -1,0 +1,14 @@
+h3 {
+  font-size: 600%;
+  line-height: normal;
+  text-align: center;
+  margin: 0;
+}
+
+.sucess {
+  color: #00e444;
+}
+
+.fail {
+  color: #cf1d10;
+}

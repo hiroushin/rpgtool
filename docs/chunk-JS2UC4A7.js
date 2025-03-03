@@ -1,0 +1,1 @@
+import{Eb as c,Sa as t,lb as o,mb as p}from"./chunk-LD52HL35.js";var a=class n{static \u0275fac=function(e){return new(e||n)};static \u0275cmp=t({type:n,selectors:[["app-npc"]],decls:2,vars:0,template:function(e,m){e&1&&(o(0,"p"),c(1,"npm works!"),p())},encapsulation:2})};export{a as NpcComponent};

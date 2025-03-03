@@ -1,0 +1,14 @@
+@if (show) {
+<div class="bg">
+  <mat-slider [min]="min" [max]="max" step="1" showTickMarks discrete [displayWith]="formatSliderLabel">
+    <input matSliderThumb #slider [(ngModel)]="value"
+      (input)="change($event)"
+      (mouseup)="update($event)"
+      (touchend)="update($event)">
+  </mat-slider>
+</div>
+}
+
+<mat-form-field>
+  <input matInput [(ngModel)]="value" (focus)="open($event)">
+</mat-form-field>
