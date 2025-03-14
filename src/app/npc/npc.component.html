@@ -1,1 +1,22 @@
-<p>npm works!</p>
+<mat-accordion>
+  @for (item of list; track item) {
+    <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+      <mat-expansion-panel-header>
+        <mat-panel-title> {{item.name}} </mat-panel-title>
+        <mat-panel-description>
+          {{item.race}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>
+        <b>Ancestralidade:</b> {{item.sub}} <br>
+        <b>Classe:</b> {{item.class}}
+      </p>
+    </mat-expansion-panel>
+  }
+</mat-accordion>
+
+<div class="fixed">
+  <button mat-flat-button (click)="new()">
+    npc
+  </button>
+</div>

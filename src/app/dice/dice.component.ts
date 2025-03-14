@@ -26,12 +26,13 @@ import { InputNumberSlideComponent } from '../input-number-slide/input-number-sl
 export class DiceComponent implements OnInit {
 
   list: Array<any> = [
-    { faces: 4, length: 1 },
-    { faces: 6, length: 1 },
-    { faces: 8, length: 1 },
-    { faces: 10, length: 1 },
-    { faces: 12, length: 1 }
+    { faces: 4, length: 1, bonus: 0 },
+    { faces: 6, length: 1, bonus: 0 },
+    { faces: 8, length: 1, bonus: 0 },
+    { faces: 10, length: 1, bonus: 0 },
+    { faces: 12, length: 1, bonus: 0 }
   ]
+  d20 = { bonus: 0 }
   name: string = ''
   dialog = inject(MatDialog);
 
@@ -45,8 +46,12 @@ export class DiceComponent implements OnInit {
     this.dataSource = Dice.getLog();
   }
 
-  updateList(item:any, value:number) {
+  updateLength(item:any, value:number) {
     item.length = value;
+  }
+
+  updateBonus(item:any, value:number) {
+    item.bonus = value;
   }
 
   clearLog() {
@@ -54,23 +59,30 @@ export class DiceComponent implements OnInit {
   }
 
   results(data: any) {
-    console.log(data)
     this.dialog.open(PopupComponent, {
       data: data,
     });
   }
 
-  roll(faces: number) {
-    this.results(Dice.roll(faces))
+  roll(faces: number, bonus?: number) {
+    let result = Dice.roll(faces)
+    result.value += bonus || 0
+    this.results(result)
   }
-  rollSum(faces: number, length: number) {
-    this.results(Dice.rollSum(faces, length))
+  rollSum(faces: number, length: number, bonus?: number) {
+    let result = Dice.rollSum(faces, length)
+    result.value += bonus || 0
+    this.results(result)
   }
-  rollMin(faces: number) {
-    this.results(Dice.rollMin(faces))
+  rollMin(faces: number, bonus?: number) {
+    let result = Dice.rollMin(faces)
+    result.value += bonus || 0
+    this.results(result)
   }
-  rollMax(faces: number) {
-    this.results(Dice.rollMax(faces))
+  rollMax(faces: number, bonus?: number) {
+    let result = Dice.rollMax(faces)
+    result.value += bonus || 0
+    this.results(result)
   }
 
   formatSliderLabel(value: number): string {

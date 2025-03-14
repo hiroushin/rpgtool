@@ -9,12 +9,18 @@ mat-form-field, mat-form-field input {
 mat-slider {
   position: fixed;
   width: 90vw;
-  top: 50%;
+  top: 25%;
   left: 5vw;
 }
+
 mat-slider .mdc-slider__input {
-  opacity: 1;
+  opacity: 0 !important;
 }
+
+::ng-deep mat-slider .mdc-slider__track--inactive {
+  opacity: 1 !important;
+}
+
 mat-form-field, button {
   margin: 1vmax;
   margin-right: 0vmax;

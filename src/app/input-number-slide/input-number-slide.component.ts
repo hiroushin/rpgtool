@@ -20,19 +20,19 @@ export class InputNumberSlideComponent {
   @Input({ alias: 'minValue' }) minValue = NaN
   @Output("valueEvent") event = new EventEmitter<number>();
 
-  range = 20;
+  range = 10;
   show: boolean = false
   max: number = this.value
   min: number = this.value
   timeout: any
 
   updateMinMax() {
-    let max = this.value + this.range
+    let max = this.value + this.range - 1
     if (!isNaN(this.maxValue) && max > this.maxValue) {
       max = this.maxValue
     }
     this.max = max
-    let min = this.value - this.range
+    let min = this.value - this.range - 1
     if (!isNaN(this.minValue) && min < this.minValue) {
       min = this.minValue
     }

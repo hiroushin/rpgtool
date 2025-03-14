@@ -1,24 +1,30 @@
 @for (item of list; track item.faces) {
 <div>
-  <app-input-number-slide [value]="item.length" (valueEvent)="updateList(item, $event)">
+  <app-input-number-slide [value]="item.length" [minValue]="1" (valueEvent)="updateLength(item, $event)">
   </app-input-number-slide>
-  <button mat-flat-button (click)="rollSum(item.faces, item.length)">
+  <button mat-flat-button (click)="rollSum(item.faces, item.length, item.bonus)">
     {{item.length}} D{{item.faces}}
   </button>
+  +
+  <app-input-number-slide [value]="item.bonus" (valueEvent)="updateBonus(item, $event)">
+  </app-input-number-slide>
 </div>
 <mat-divider></mat-divider>
 }
 
 <div>
-  <button mat-flat-button (click)="rollMin(20)">
+  <button mat-flat-button (click)="rollMin(20, d20.bonus)">
     2 D20 (small)
   </button>
-  <button mat-flat-button (click)="roll(20)">
+  <button mat-flat-button (click)="roll(20, d20.bonus)">
     D20
   </button>
-  <button mat-flat-button (click)="rollMax(20)">
+  <button mat-flat-button (click)="rollMax(20, d20.bonus)">
     2 D20 (big)
   </button>
+  +
+  <app-input-number-slide [value]="d20.bonus" (valueEvent)="updateBonus(d20, $event)">
+  </app-input-number-slide>
 </div>
 <mat-divider></mat-divider>
 <div>
@@ -42,7 +48,12 @@
   </ng-container>
 
   <ng-container matColumnDef="results">
-    <th mat-header-cell *matHeaderCellDef> Results </th>
+    <th mat-header-cell *matHeaderCellDef>
+      Results
+      <button class="right" mat-flat-button (click)="clearLog()">
+        Clear History
+      </button>
+    </th>
     <td mat-cell *matCellDef="let element">
       @for (item of element.all; track item) {
       {{item}},
@@ -53,7 +64,4 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-<button class="right" mat-flat-button (click)="clearLog()">
-  Clear History
-</button>
 }

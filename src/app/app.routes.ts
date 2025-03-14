@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/dice', pathMatch: 'full' },
+  { path: '', redirectTo: '/npc', pathMatch: 'full' },
   {
     path: 'dice',
     loadComponent: () => import('./dice/dice.component').then(m => m.DiceComponent)
